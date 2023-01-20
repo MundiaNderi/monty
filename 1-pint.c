@@ -1,21 +1,27 @@
 #include "monty.h"
-
 /**
-* op_pint - function that prints the value at the top of the stack
-* @stack: a pointer to the head of a linked list
-* @line_number: the line number
-* Return: nothing
-*/
-void op_pint(stack_t **stack, unsigned int line_number)
+ * pint - prints the value at the top of stack
+ * @stack: pointer to the head node pointer of stack
+ * @nline: the line number
+ * Return: Nothing.
+ */
+void pint(stack_t **stack, unsigned int nline)
 {
-	stack_t *current = *stack;
+	stack_t *temp;
 
-	if (current)
+	if (stack == NULL || *stack == NULL)
 	{
-		printf("%d\n", current->n);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", nline);
+		exit(EXIT_FAILURE);
 	}
-	else
+
+	temp = *stack;
+	while (temp)
 	{
-		pint_error(line_number);
+		if (temp->prev == NULL)
+			break;
+		temp = temp->prev;
 	}
+
+	printf("%d\n", temp->n);
 }
