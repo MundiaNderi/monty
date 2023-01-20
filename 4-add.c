@@ -6,7 +6,7 @@
 * @line_number: the line number
 * Return: nothing
 */
-void addop(stack_t **stack, unsigned int line_numbe)
+void addop(stack_t **stack, unsigned int line_number)
 {
 		stack_t *temp;
 
