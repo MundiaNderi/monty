@@ -116,7 +116,7 @@ void addst(stack_t **stack, unsigned int nline);
 
 /* Math functions */
 void subop(stack_t **stack, unsigned int nline);
-void addop(stack_t **stack, unsigned int nline);
+void addop(stack_t **stack, unsigned int line_number);
 void divop(stack_t **stack, unsigned int nline);
 void mulop(stack_t **stack, unsigned int nline);
 void modop(stack_t **stack, unsigned int nline);
