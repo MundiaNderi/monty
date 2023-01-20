@@ -1,3 +1,5 @@
+#include "monty.h"
+
 /**
  * nop - does literally nothing
  * @stack: pointer to the head node pointer of stack
