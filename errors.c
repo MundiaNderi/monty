@@ -7,7 +7,7 @@
 */
 void sub_error(unsigned int c)
 {
-	dprintf(STDERR_FILENO, "L%u: can't sub, stack too short\n", c);
+	fprintf(stderr, "L%u: can't sub, stack too short\n", c);
 	exit(EXIT_FAILURE);
 }
 
@@ -18,7 +18,7 @@ void sub_error(unsigned int c)
 */
 void div_error(unsigned int c)
 {
-	dprintf(STDERR_FILENO, "L%u: can't div, stack too short\n", c);
+	fprintf(stderr, "L%u: can't div, stack too short\n", c);
 	exit(EXIT_FAILURE);
 }
 
@@ -29,7 +29,7 @@ void div_error(unsigned int c)
 */
 void mul_error(unsigned int c)
 {
-	dprintf(STDERR_FILENO, "L%u: can't mul, stack too short\n", c);
+	fprintf(stderr, "L%u: can't mul, stack too short\n", c);
 	exit(EXIT_FAILURE);
 }
 
@@ -40,6 +40,6 @@ void mul_error(unsigned int c)
 */
 void mod_error(unsigned int c)
 {
-	dprintf(STDERR_FILENO, "L%u: can't mod, stack too short\n", c);
+	fprintf(stderr, "L%u: can't mod, stack too short\n", c);
 	exit(EXIT_FAILURE);
 }

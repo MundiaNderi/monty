@@ -6,38 +6,40 @@
 * @line_number: the line number
 * Return: nothing
 */
-void op_push(stack_t **stack, unsigned int line_number)
+void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new_node;
-	(void)line_number;
+	stack_t *new;
 
-	new_node = malloc(sizeof(stack_t));
-	if (!new_node)
+
+	if (stack == NULL)
 	{
-		dprintf(STDERR_FILENO, "Error: malloc failed\n");
-		free_buff();
-		free_stack(*stack);
+		fprintf(stderr, "L%d: stack not found\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	new_node->n = glo.node_data;
-	new_node->next = NULL;
-	new_node->prev = NULL;
+	new = malloc(sizeof(stack_t));
+	if (new == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		free_stack(stack);
+		exit(EXIT_FAILURE);
+	}
+	
+	new->next = *stack;
+	new->prev = NULL;
+	new->n = arg.arg;
 
 	if (*stack)
-	{
-		new_node->next = *stack;
-
-		(*stack)->prev = new_node;
-	}
+		(*stack)->prev = new;
+	*stack = new;
 }
 
 /**
-*  op_pall - function that prints out all the elements of a linked list
+*  pall - function that prints out all the elements of a linked list
 *  @stack: a pointer to the head of a linked list
 *  @line_number: the line number
 *  Return: nothing
 */
-void op_pall(stack_t **stack, unsigned int line_number)
+void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current = *stack;
 	(void)line_number;

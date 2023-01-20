@@ -1,20 +1,24 @@
 #include "monty.h"
 
 /**
-* op_add - adds the first two nodes together
+* addop - adds the first two nodes together
 * @stack: a pointer to the head of a linked list
 * @line_number: the line number
 * Return: nothing
 */
-void op_add(stack_t **stack, unsigned int line_number)
+void addop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *current = *stack;
-	stack_t *second_node;
+		stack_t *temp;
 
-	if (!current || !current->next)
-		add_error(line_number);
+	if (!(*stack) || !(*stack)->next)
+	{
+		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 
-	second_node = current->next;
-	second_node->n = second_node->n + current->n;
-	op_pop(stack, line_number);
+	temp = *stack;
+	(*stack)->next->n += (*stack)->n;
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
+	free(temp);
 }

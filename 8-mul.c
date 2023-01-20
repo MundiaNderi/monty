@@ -1,6 +1,7 @@
 #include "monty.h"
 
 /**
+<<<<<<< HEAD
 * op_mul - multiplies the first two nodes together
 * @stack: a pointer to the head of a linked list
 * @line_number: the line number
@@ -17,4 +18,26 @@ void op_mul(stack_t **stack, unsigned int line_number)
 	second_node = current->next;
 	second_node->n = second_node->n * current->n;
 	op_pop(stack, line_number);
+=======
+ * mulop - multiplies the top two elements and stores it in second element
+ * @stack: pointer to the head node pointer of stack
+ * @nline: the line number
+ * Return: Nothing.
+ */
+void mulop(stack_t **stack, unsigned int nline)
+{
+	stack_t *temp;
+
+	if (!(*stack) || !(*stack)->next)
+	{
+		fprintf(stderr, "L%d: can't mul, stack too short\n", nline);
+		exit(EXIT_FAILURE);
+	}
+
+	temp = *stack;
+	(*stack)->next->n *= (*stack)->n;
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
+	free(temp);
+>>>>>>> 8bd2961cb63db6e1a0a3a5d0abc724dc4b47334d
 }
