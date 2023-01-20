@@ -1,4 +1,4 @@
-#ifndef _MONTY__H__
+#ifndef __MONTY__H__
 #define __MONTY__H__
 #include <stdio.h>
 #include <stdlib.h>
