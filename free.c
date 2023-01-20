@@ -55,10 +55,10 @@ void parsefile(FILE *file)
 	meta->stack = NULL;
 	meta->buf = NULL;
 
-	while (fgets(&(meta->buf), &size, meta->file) != -1)
-	{		
+	while (getline(&(meta->buf), &size, meta->file) != -1)
+	{
 		line.number++;
-		parseline(&line, meta->buf);  
+		parseline(&line, meta->buf);
 		if (line.content)
 			get_op_func(line, meta)(&(meta->stack), line.number);
 	}
