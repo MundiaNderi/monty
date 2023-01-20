@@ -97,10 +97,10 @@ bool comment_check(line_t line);
 void push_check(line_t line, meta_t *meta, char *opcode);
 
 /* Stack manipulation functions */
-void push(stack_t **stack, unsigned int nline);
-void pall(stack_t **stack, unsigned int nline);
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int nline);
-void pop(stack_t **stack, unsigned int nline);
+void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int nline);
 void nop(stack_t **stack, unsigned int nline);
 void rotl(stack_t **stack, unsigned int nline);

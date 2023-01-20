@@ -8,18 +8,21 @@
 */
 void op_pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *current = *stack;
-	stack_t *tmp;
-
-	if (!current)
-		pop_error(stack, line_number);
-
-	tmp = current->next;
-	free(current);
-	*stack = tmp;
-	current = *stack;
-	if (current)
+	if (stack == NULL || *stack == NULL)
 	{
-		current->prev = NULL;
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	/* if stack is more than 1 node, else free entire thing */
+	if ((*stack)->next != NULL)
+	{
+		*stack = (*stack)->next;
+		free((*stack)->prev);
+		(*stack)->prev = NULL;
+	}
+	else
+	{
+		free(*stack);
+		*stack = NULL;
 	}
 }
