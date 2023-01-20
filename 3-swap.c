@@ -1,37 +1,28 @@
 #include "monty.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
-* op_swap - function that swaps the first 2 nodes in a linked list
+* swap - function that swaps the first 2 nodes in a linked list
 * @stack: a pointer to the head of a linked list
-* @l: the line number
+* @size: size of the stack.
+* @line_number - indicates the current line number where
+* the function is being called.
 * Return: nothing
 */
-void op_swap(stack_t **stack, unsigned int l)
+void swap(int *stack, int size, int line_number)
 {
-	stack_t *current = *stack;
-	stack_t *second_node;
-	int temp;
-
-	if (!(*stack))
+	if (size < 2)
 	{
-		dprintf(STDERR_FILENO, "L%u: can't swap, stack too short\n", l);
-		free_buff();
+		printf("L%d: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-
-	if (current && current->next)
-	{
-		second_node = current->next;
-		temp = current->n;
-		current->n = second_node->n;
-		second_node->n = temp;
-	}
-
 	else
 	{
-		dprintf(STDERR_FILENO, "L%u: can't swap, stack too short\n", l);
-		free_buff();
-		free_stack(*stack);
-		exit(EXIT_FAILURE);
+		int temp = stack[size - 1];
+		stack[size - 1] = stack[size - 2];
+
+		stack[size - 2] = temp;
 	}
 }
+

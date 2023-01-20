@@ -71,7 +71,7 @@ void op_pall(stack_t **stack, unsigned int line_number);
 void op_pint(stack_t **stack, unsigned int line_number);
 void op_pop(stack_t **stack, unsigned int line_number);
 void op_add(stack_t **stack, unsigned int line_number);
-void op_swap(stack_t **stack, unsigned int line_number);
+void swap(int *stack, int size, int line_number);
 void op_nop(stack_t **stack, unsigned int line_number);
 void op_sub(stack_t **stack, unsigned int line_number);
 void op_div(stack_t **stack, unsigned int line_number);
@@ -91,5 +91,4 @@ void op_check_print_error(unsigned int c);
 
 /* Freeing functions */
 void free_buff(void);
-void free_stack(stack_t *head);
-#endif
+void free_stack(stack_t *head);#endif
