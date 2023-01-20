@@ -1,4 +1,5 @@
 #include "monty.h"
+glo_t glo;
 
 /**
 * op_push - function that push an element to the stack
@@ -29,14 +30,13 @@ void op_push(stack_t **stack, unsigned int line_number)
 
 		(*stack)->prev = new_node;
 	}
-	*stack = new_node;
 }
 
 /**
-* op_pall - function that prints out all the elements of a linked list
-* @stack: a pointer to the head of a linked list
-* @line_number: the line number
-* Return: nothing
+*  op_pall - function that prints out all the elements of a linked list
+*  @stack: a pointer to the head of a linked list
+*  @line_number: the line number
+*  Return: nothing
 */
 void op_pall(stack_t **stack, unsigned int line_number)
 {
