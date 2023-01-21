@@ -103,6 +103,7 @@ void read_file(char *path)
 * @argv: argument vector
 * Return: always 0
 */
+int main(int argc, char **argv)
 {
 	if (argc != 2)
 	{

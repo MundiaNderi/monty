@@ -1,4 +1,5 @@
-#include monty.h
+#include "monty.h"
+#include <stdlib.h>
 
 /**
 * queue_push - pushes to queue
