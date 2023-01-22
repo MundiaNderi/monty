@@ -9,25 +9,38 @@
 */
 void op_mod(stack_t **stack, unsigned int lnum)
 {
-stack_t *temp;
+	stack_t *temp = *stack;
+	char *num;
+	int prev_is_stack;
 
 	if (!(*stack) || !(*stack)->next)
 	{
+		free_global();
 		fprintf(stderr, "L%d: can't mod, stack too short\n", lnum);
 		exit(EXIT_FAILURE);
 	}
 
-	if ((*stack)->n == 0)
+	for (; temp->next->next; temp = temp->next)
+		;
+	if (temp->next->n == 0)
 	{
+		free_global();
 		fprintf(stderr, "L%d: division by zero\n", lnum);
 		exit(EXIT_FAILURE);
 	}
 
-	temp = *stack;
-	(*stack)->next->n %= (*stack)->n;
-	*stack = (*stack)->next;
-	(*stack)->prev = NULL;
-	free(temp)
+	num = _itoa(temp->n % temp->next->n);
+
+	op_pop(stack, lnum);
+	op_pop(stack, lnum);
+
+	s.number = num;
+	prev_is_stack = s.is_stack;
+	s.is_stack = 1;
+	op_push(stack, lnum);
+	s.is_stack = prev_is_stack;
+
+	free(num);
 }
 /**
 * op_pchar - prints the char at the top of the stack
